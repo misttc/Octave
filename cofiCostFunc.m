@@ -42,7 +42,7 @@ Theta_grad = zeros(size(Theta));
 
 Pred = X * Theta';
 Err = (Pred - Y).* R ;
-J = (1/2) * sumsq(Err);
+J = (1/2) * sum(sumsq(Err));
 
 X_grad = Err * Theta;
 Theta_grad = Err' * X;
