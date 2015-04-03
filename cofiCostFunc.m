@@ -42,10 +42,12 @@ Theta_grad = zeros(size(Theta));
 
 Pred = X * Theta';
 Err = (Pred - Y).* R ;
-J = (1/2) * sum(sumsq(Err));
+rtheta = (lambda/2) * sum(sumsq(Theta));      	% regularized Theta
+rx = (lambda/2) * sum(sumsq(X));				% regularized X
+J = (1/2) * sum(sumsq(Err)) + rtheta + rx;
 
-X_grad = Err * Theta;
-Theta_grad = Err' * X;
+X_grad = Err * Theta + lambda*X;
+Theta_grad = Err' * X + lambda*Theta;
 
 
 % =============================================================
